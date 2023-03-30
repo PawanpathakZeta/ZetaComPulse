@@ -42,7 +42,7 @@ st.markdown(f""" <style>
 col1, col2 = st.columns([13, 2])
 
 ## Header
-col1.title('Zeta Competitive Pulse')
+col1.title('Zeta Competitor Pulse')
 """Competitive Intelligence and Insights Using Zeta Data"""
 
 ## Zeta Logo
@@ -69,7 +69,7 @@ col2.image(zeta_logo)
 #     ,color = alt.value("#0905AF")# sort=['OPENS','CLICKS']
 # ) 
 match_rate = pd.DataFrame({"values": ['v_match_email', 'iv_match_phone', 'iii_match_name', 'ii_unmatch','i_unknown'],"values1": [1800, 1404, 675, 469,200]})
-
+# match_rate = pd.DataFrame({"values": ['unknown', 'unmatch', 'match_name', 'match_phone','match_email'],"values1": [200, 469, 675, 1404,1800]})
 pie1=alt.Chart(match_rate).mark_arc(innerRadius=15, stroke="#fff").encode(
     theta=alt.Theta("values1", stack=True),
     radius=alt.Radius("values1", scale=alt.Scale(type="sqrt", zero=True,rangeMin=20)),
@@ -220,26 +220,26 @@ graph5 = stream5
 
 # 6. 2D Histogram Scatter Plot
 
-# source =pd.read_csv('bubble_chart.csv')
+source =pd.read_csv('bubble_chart.csv')
+hist6 =alt.Chart(source, title='Price Sensitivity Scores Across Age and Income Band').mark_circle(color="#0905AF").encode(
+    alt.X('Income bins', bin=True, axis=alt.Axis(title='Income bins(K)')),
+    alt.Y('Age', bin=True, axis=alt.Axis(title="Age bins")),
+    size='Price sensitivity scores'
+).properties(
+width=850 # controls width of bar.
+, height=445  # height of the table
+)
+
+
+# source = data.movies.url
 # hist6 =alt.Chart(source, title='Price Sensitivity Scores Across Age and Income Band').mark_circle(color="#0905AF").encode(
-#     alt.X('Income bins', bin=True, axis=alt.Axis(title='Income bins(K)')),
-#     alt.Y('Age', bin=True, axis=alt.Axis(title="Age bins")),
-#     size='Price sensitivity scores'
+#     alt.X('IMDB_Rating:Q', bin=True, axis=alt.Axis(title='Income bins')),
+#     alt.Y('Rotten_Tomatoes_Rating:Q', bin=True, axis=alt.Axis(title="Age bins")),
+#     size='count()'
 # ).properties(
 # width=850 # controls width of bar.
 # , height=445  # height of the table
 # ).interactive()
-
-
-source = data.movies.url
-hist6 =alt.Chart(source, title='Price Sensitivity Scores Across Age and Income Band').mark_circle(color="#0905AF").encode(
-    alt.X('IMDB_Rating:Q', bin=True, axis=alt.Axis(title='Income bins')),
-    alt.Y('Rotten_Tomatoes_Rating:Q', bin=True, axis=alt.Axis(title="Age bins")),
-    size='count()'
-).properties(
-width=850 # controls width of bar.
-, height=445  # height of the table
-).interactive()
 
 graph6 =hist6 
 
@@ -380,7 +380,7 @@ forecast1 = forecast1[~forecast1.Company.isin(['index'])]
 
 line_a=alt.Chart(forecast1,title="Conversion Predictions").mark_line().encode(
     x='yearmonth(date):T',
-    y='min(Conversions):Q',
+    y='mean(Conversions):Q',
     color='Company:N'
 ).transform_filter(
     alt.FieldOneOfPredicate(field='Company', oneOf=['Motel6', 'Motel6_pred'])
@@ -392,7 +392,7 @@ line_a=alt.Chart(forecast1,title="Conversion Predictions").mark_line().encode(
 
 line_b = alt.Chart(forecast1,title="Conversion Behavior").mark_line().encode(
     x='yearmonth(date):T',
-    y='min(Conversions):Q',
+    y='mean(Conversions):Q',
     color='Company:N'
 # ).transform_filter(
 #    alt.FieldOneOfPredicate(field='Company', oneOf=['Jetblue', 'Jetblue_pred'])
@@ -423,7 +423,8 @@ with col1:
     st.altair_chart(graph5, use_container_width=True)
     st.header("  ")
     st.header("  ")
-    st.header("_______________________________________________________________________________________________")
+    st.header("  ")
+    # st.header("_______________________________________________________________________________________________")
     # st.header("***********************************************************************************************************************************")
     st.header("  ")
     st.header("  ")
@@ -487,7 +488,7 @@ with col3:
     # graph8  
     st.header("  ")
     st.header("  ")
-    st.header("  ")
+    # st.header("  ")
     # st.header("_______________________________________________________________________")
     # st.altair_chart(graph9, use_container_width=True)
     st.altair_chart(graph9, use_container_width=True)
