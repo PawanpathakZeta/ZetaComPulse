@@ -210,7 +210,7 @@ stream5= alt.Chart(abd, title='Transactional Category').mark_area().encode(
     #opacity=alt.condition(selection, alt.value(1), alt.value(0.2))
 ).properties(
 width=900 # controls width of bar.
-, height=395  # height of the table
+, height=415  # height of the table
 ).interactive()
 #.add_params(
 #    selection
@@ -340,7 +340,7 @@ hexbin= alt.Chart(source, title="Click Behavior of the Day across Months​").ma
     #stroke=alt.value('black'),
     strokeWidth=alt.value(0.2),
 
-    fill=alt.Color('mean(CLICK_COUNT):Q',  legend=alt.Legend(title='Average clicks(K)')), #scale =
+    fill=alt.Color('mean(CLICK_COUNT):Q',  legend=alt.Legend(title='clicks(K)')), #scale =
     # fill=alt.Color('mean(CLICK_COUNT):Q'), #scale = 
     tooltip=['LAST_CLICK_DATE:O', 'LAST_CLICK_DAY:O', 'mean(CLICK_COUNT):Q']
 ).transform_calculate(
@@ -418,15 +418,15 @@ with col1:
     st.altair_chart(graph1, use_container_width=True)  
     st.header("  ")
     # graph5
-    # st.header("  ")
+    st.header("  ")
     # graph5
     st.altair_chart(graph5, use_container_width=True)
     st.header("  ")
-    st.header("  ")
-    st.header("  ")
+    # st.header("  ")
+    # st.header("  ")
     # st.header("_______________________________________________________________________________________________")
     # st.header("***********************************************************************************************************************************")
-    st.header("  ")
+    # st.header("  ")
     st.header("  ")
     st.altair_chart(graph7, use_container_width=True)
     # st.header("  ")
@@ -480,14 +480,14 @@ with col3:
     # graph2
     st.altair_chart(graph2, use_container_width=True)
     st.header("  ")
-    # st.header("  ")
+    st.header("  ")
     # graph4
     # st.header("  ")
     st.altair_chart(graph6, use_container_width=True)
     st.header("  ")
     # graph8  
-    st.header("  ")
-    st.header("  ")
+    # st.header("  ")
+    # st.header("  ")
     # st.header("  ")
     # st.header("_______________________________________________________________________")
     # st.altair_chart(graph9, use_container_width=True)
